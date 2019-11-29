@@ -31,11 +31,21 @@
 </template>
 
 <script>
+const {api} = require('./../../../config');
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+   data: () => {},
+   mounted() {
+     this.test();
+   },
+   methods: {
+     test() {
+       console.log('yop', api);    
+    }
+   }
 }
 </script>
 

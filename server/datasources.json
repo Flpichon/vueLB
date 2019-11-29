@@ -2,5 +2,16 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "docDb": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/docDb",
+    "database": "docDb",
+    "password": "",
+    "name": "docDb",
+    "user": "",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
   }
 }
