@@ -1,6 +1,11 @@
 <template>
   <v-container>
-    coucou
+    <v-layout
+      text-center
+      wrap
+    >
+    Coucou les amis
+    </v-layout>
   </v-container>
 </template>
 
@@ -9,17 +14,14 @@ export default {
   name: 'HelloWorld',
 
   data: () => ({
+    value: false
   }),
   mounted() {
-    this.getDocs();
+    this.getDocuments();
   },
   methods: {
-    getDocs() {
-      axios
-        .get("/api/documents?access_token=pI1lETwMbWKCXs5xPj9JGvNadxVqf75Hn3EcSplaAwwqUdCAJVSOjykrYXeYN9Za")
-        .then(res => {
-            console.log(res);
-        });
+    getDocuments() {
+      this.value = true
     }
   }
 };
