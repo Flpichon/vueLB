@@ -9,6 +9,9 @@
       "normalizeHttpPath": false,
       "xml": false
     },
+    "sharedMethods": {
+      "*": false
+    },
     "json": {
       "strict": false,
       "limit": "100kb"

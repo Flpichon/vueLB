@@ -13,26 +13,49 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db"
-  },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "docDb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "docDb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "docDb",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "docDb",
     "public": false
+  },
+  "user": {
+    "dataSource": "docDb",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "create": true,
+          "login": true,
+          "logout": true,
+          "find": true
+        }
+      }
+    }
+  },
+  "document": {
+    "dataSource": "docDb",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "find": true,
+          "create": true
+        }
+      }
+    }
   }
 }
