@@ -4,6 +4,7 @@
   "base": "User",
   "idInjection": true,
   "options": {
+    "injectOptionsFromRemoteContext": true,
     "validateUpsert": true
   },
   "properties": {
@@ -43,7 +44,8 @@
       "permission": "ALLOW",
       "property": [
         "logout",
-        "find"
+        "find",
+        "__get__accessTokens"
       ]
     },
     {

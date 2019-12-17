@@ -15,7 +15,14 @@
   },
   "AccessToken": {
     "dataSource": "docDb",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "user",
+        "foreignKey": "userId"
+      }
+    }
   },
   "ACL": {
     "dataSource": "docDb",
@@ -41,7 +48,8 @@
           "create": true,
           "login": true,
           "logout": true,
-          "find": true
+          "find": true,
+          "prototype.__get__accessTokens": true
         }
       }
     }

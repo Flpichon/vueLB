@@ -1,60 +1,58 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+  <div id="app">
+    <v-app  id="inspire">
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link><span v-if="isLoggedIn"> | <a @click="logout">Logout</a></span>
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+      <router-view/>
+    </v-app>
+  </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    computed : {
+      isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    },
+    methods: {
+      logout: function () {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+      },
+      created: function () {
+        this.$http.interceptors.response.use(undefined, function (err) {
+          return new Promise(function (resolve, reject) {
+            if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+              this.$store.dispatch('logout')
+            }
+            throw err;
+          });
+        });
+      }
+    },
+  }
 </script>
+<style lang="scss">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>

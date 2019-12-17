@@ -21,7 +21,8 @@ export default {
   },
   methods: {
     getDocuments() {
-      this.value = true
+      this.value = true;
+      console.log(this.value);
     }
   }
 };
