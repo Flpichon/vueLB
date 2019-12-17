@@ -1,0 +1,6 @@
+{ 
+    "_id" : ObjectId("5965e88505dfc031f93a8b2f"), 
+    "principalType" : "USER", 
+    "principalId" : "5df7af549257e8506cd81a94", 
+    "roleId" : ObjectId("5965e88505dfc031f93a8b2e")
+}

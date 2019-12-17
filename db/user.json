@@ -1,0 +1,11 @@
+{ 
+    "_id" : ObjectId("5df7af549257e8506cd81a94"), 
+    "email" : "franckiiboss@gmail.com", 
+    "password" : "$2a$10$YcLHwDh4yBB1yEhtEgfzSuIBln/iqMgS6kWFDUrY.HdTwGIEfDBlK"
+}
+{ 
+    "_id" : ObjectId("5df7bd2389e21531645f9f88"), 
+    "email" : "frederic@gmail.com", 
+    "password" : "$2a$10$luRRNQTlGtSMEZGUhZC.Sej8T7HwErwChfjysAePT9k25I48qBnqa", 
+    "username" : "orogarde"
+}

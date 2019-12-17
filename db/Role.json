@@ -1,0 +1,6 @@
+{ 
+    "_id" : ObjectId("5965e88505dfc031f93a8b2e"), 
+    "name" : "admin", 
+    "created" : ISODate("2017-07-12T09:14:45.333+0000"), 
+    "modified" : ISODate("2017-07-12T09:14:45.333+0000")
+}
