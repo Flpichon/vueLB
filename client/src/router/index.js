@@ -43,7 +43,6 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
-    console.log('to', to.fullPath === '/login' && store.getters.isLoggedIn);
     if (to.fullPath === '/login' && store.getters.isLoggedIn) {
         next('/about');
         return;

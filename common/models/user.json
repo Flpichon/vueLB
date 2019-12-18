@@ -4,7 +4,6 @@
     "base": "User",
     "idInjection": true,
     "options": {
-        "injectOptionsFromRemoteContext": true,
         "validateUpsert": true
     },
     "properties": {
@@ -34,7 +33,9 @@
                 "create",
                 "login",
                 "__destroyById__accessTokens",
-                "logout"
+                "__get__accessTokens",
+                "logout",
+                "isValidToken"
             ]
         },
         {
@@ -46,7 +47,8 @@
                 "logout",
                 "find",
                 "__get__accessTokens",
-                "__destroyById__accessTokens"
+                "__destroyById__accessTokens",
+                "isValidToken"
             ]
         },
         {

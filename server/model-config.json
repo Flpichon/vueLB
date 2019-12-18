@@ -50,7 +50,8 @@
                     "logout": true,
                     "find": true,
                     "prototype.__get__accessTokens": true,
-                    "prototype.__destroyById__accessTokens": true
+                    "prototype.__destroyById__accessTokens": true,
+                    "prototype.isValidToken": true
                 }
             }
         }

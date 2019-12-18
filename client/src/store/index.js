@@ -50,16 +50,40 @@ export default new Vuex.Store({
             })
         },
         async logout({ commit }) {
-            return new Promise((resolve, reject) => {
+            const userId = localStorage.getItem('userId');
+            const token = localStorage.getItem('token');
+            delete axios.defaults.headers.common['Authorization'];
+            const isTokenValid = await axios({ url: `/api/users/${userId}/isValidToken/${token}`, method: 'GET' });
+            axios.defaults.headers.common['Authorization'] = token;
+            return await new Promise((resolve, reject) => {
                 commit('logout');
-                axios({ url: '/api/users/logout', method: 'POST' })
-                    .then(() => {
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('userId');
-                        delete axios.defaults.headers.common['Authorization']
-                        resolve();
+                if (isTokenValid.token) {
+                    axios({ url: '/api/users/logout', method: 'POST' })
+                        .then(() => {
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('userId');
+                            delete axios.defaults.headers.common['Authorization'];
+                            resolve();
                     });
+                } else {
+                    delete axios.defaults.headers.common['Authorization'];
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userId');
+                    resolve();
+                }
             });
+        },
+        async hasValidToken({ commit }) {
+            const userId = localStorage.getItem('userId');
+            return new Promise ((resolve, reject) => {
+                axios.get(`/api/users/${userId}/accessTokens`)
+                    .then((token) => {
+                        resolve(token);
+                    })
+                    .catch((error) => {
+                        reject('error');
+                    })
+            })
         }
     },
     modules: {},

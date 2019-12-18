@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-app  id="inspire">
+      <v-btn @click="access">COUCOU</v-btn>
       <div id="nav">
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link><span v-if="isLoggedIn"> | <a @click="logout">Logout</a></span>
@@ -20,6 +21,10 @@
         .then(() => {
           this.$router.push('/login')
         })
+      },
+      access: function () {
+        this.$store.dispatch('hasValidToken')
+          .catch(() => this.$store.dispatch('logout'));
       },
       created: function () {
         this.$http.interceptors.response.use(undefined, function (err) {
