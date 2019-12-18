@@ -1,69 +1,70 @@
 {
-  "_meta": {
-    "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
-      "../common/models",
-      "./models"
-    ],
-    "mixins": [
-      "loopback/common/mixins",
-      "loopback/server/mixins",
-      "../common/mixins",
-      "./mixins"
-    ]
-  },
-  "AccessToken": {
-    "dataSource": "docDb",
-    "public": false,
-    "relations": {
-      "user": {
-        "type": "belongsTo",
-        "model": "user",
-        "foreignKey": "userId"
-      }
-    }
-  },
-  "ACL": {
-    "dataSource": "docDb",
-    "public": false
-  },
-  "RoleMapping": {
-    "dataSource": "docDb",
-    "public": false,
-    "options": {
-      "strictObjectIDCoercion": true
-    }
-  },
-  "Role": {
-    "dataSource": "docDb",
-    "public": false
-  },
-  "user": {
-    "dataSource": "docDb",
-    "public": true,
-    "options": {
-      "remoting": {
-        "sharedMethods": {
-          "create": true,
-          "login": true,
-          "logout": true,
-          "find": true,
-          "prototype.__get__accessTokens": true
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models",
+            "./models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins",
+            "../common/mixins",
+            "./mixins"
+        ]
+    },
+    "AccessToken": {
+        "dataSource": "docDb",
+        "public": true,
+        "relations": {
+            "user": {
+                "type": "belongsTo",
+                "model": "user",
+                "foreignKey": "userId"
+            }
         }
-      }
-    }
-  },
-  "document": {
-    "dataSource": "docDb",
-    "public": true,
-    "options": {
-      "remoting": {
-        "sharedMethods": {
-          "find": true,
-          "create": true
+    },
+    "ACL": {
+        "dataSource": "docDb",
+        "public": false
+    },
+    "RoleMapping": {
+        "dataSource": "docDb",
+        "public": false,
+        "options": {
+            "strictObjectIDCoercion": true
         }
-      }
+    },
+    "Role": {
+        "dataSource": "docDb",
+        "public": false
+    },
+    "user": {
+        "dataSource": "docDb",
+        "public": true,
+        "options": {
+            "remoting": {
+                "sharedMethods": {
+                    "create": true,
+                    "login": true,
+                    "logout": true,
+                    "find": true,
+                    "prototype.__get__accessTokens": true,
+                    "prototype.__destroyById__accessTokens": true
+                }
+            }
+        }
+    },
+    "document": {
+        "dataSource": "docDb",
+        "public": true,
+        "options": {
+            "remoting": {
+                "sharedMethods": {
+                    "find": true,
+                    "create": true
+                }
+            }
+        }
     }
-  }
 }
