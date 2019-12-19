@@ -42,7 +42,7 @@ export default new Vuex.Store({
                         commit('auth_success', { token, userId });
                         resolve(resp);
                     })
-                    .catch(err => {
+                    .catch(err => {         
                         commit('auth_error');
                         localStorage.removeItem('token');
                         reject(err);

@@ -5,7 +5,9 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import store from './store'
 import Vuelidate from 'vuelidate'
+import Notifications from 'vue-notification'
 
+Vue.use(Notifications);
 Vue.config.productionTip = false;
 Vue.config.devtools = true
 Vue.use(Vuelidate);

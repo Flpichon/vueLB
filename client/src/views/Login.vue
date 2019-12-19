@@ -71,7 +71,14 @@ export default {
       const password = this.password
       this.$store.dispatch('login', { username, password })
       .then(() => this.$router.push('/'))
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.$notify({
+          type: 'error',
+          group: 'foo',
+          title: 'Echec de la connexion',
+          text: 'Votre identifiant et/ou votre mot de passe sont incorrects.'
+        });
+      });
     }
   },
 }
