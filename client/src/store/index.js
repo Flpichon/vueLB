@@ -54,7 +54,6 @@ export default new Vuex.Store({
             const token = localStorage.getItem('token');
             delete axios.defaults.headers.common['Authorization'];
             const isTokenValid = await axios({ url: `/api/users/${userId}/isValidToken/${token}`, method: 'GET' });
-            console.log('token', isTokenValid.data.token);
             axios.defaults.headers.common['Authorization'] = token;
             return await new Promise((resolve, reject) => {
                 commit('logout');
@@ -74,18 +73,6 @@ export default new Vuex.Store({
                 }
             });
         },
-        async hasValidToken({ commit }) {
-            const userId = localStorage.getItem('userId');
-            return new Promise ((resolve, reject) => {
-                axios.get(`/api/users/${userId}/accessTokens`)
-                    .then((token) => {
-                        resolve(token);
-                    })
-                    .catch((error) => {
-                        reject('error');
-                    })
-            })
-        }
     },
     modules: {},
     getters: {
