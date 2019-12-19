@@ -2,19 +2,24 @@
 
 module.exports = function(User) {
     User.beforeRemote('login', (ctx, instance, next) => {
-        ctx.req.body.ttl = 20;
+        ctx.req.body.ttl = 604800;
         next();
     });
 
-    User.prototype.isValidToken = function(tokenId) {
-				return new Promise((resolve, reject) => {
-					return User.app.models.AccessToken.resolve(tokenId, (err, token) => {
-						if (err) {
-							resolve({token: false})
-						} else {
-							resolve({token: true});
-						}
-					})
+    User.prototype.isValidToken = async function(tokenId) {
+				return new Promise( async (resolve, reject) => {
+                    const hasAccessToken = await User.app.models.AccessToken.count();
+                    if (hasAccessToken) {
+                        return User.app.models.AccessToken.resolve(tokenId, (err, token) => {
+                            if (err) {
+                                resolve({token: false});
+                            } else {
+                                resolve({token: true});
+                            }
+                        })
+                    } else {
+                        resolve({token: false});
+                    }
 				})
     };
 
