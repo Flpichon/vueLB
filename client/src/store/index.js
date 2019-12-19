@@ -54,10 +54,11 @@ export default new Vuex.Store({
             const token = localStorage.getItem('token');
             delete axios.defaults.headers.common['Authorization'];
             const isTokenValid = await axios({ url: `/api/users/${userId}/isValidToken/${token}`, method: 'GET' });
+            console.log('token', isTokenValid.data.token);
             axios.defaults.headers.common['Authorization'] = token;
             return await new Promise((resolve, reject) => {
                 commit('logout');
-                if (isTokenValid.token) {
+                if (isTokenValid.data.token) {
                     axios({ url: '/api/users/logout', method: 'POST' })
                         .then(() => {
                             localStorage.removeItem('token');
