@@ -1,29 +1,63 @@
 <template>
-    <v-container>
-        <form @submit.prevent="login">
-        <v-text-field
-            v-model="username"
-            :error-messages="userNameErrors"
-            :counter="10"
-            label="Pseudonyme"
-            required
-            @input="$v.username.$touch()"
-            @blur="$v.username.$touch()"
-        ></v-text-field>
-        <v-text-field
-            v-model="password"
-            type="password"
-            :error-messages="passwordErrors"
-            label="Mot de passe"
-            required
-            @input="$v.password.$touch()"
-            @blur="$v.password.$touch()"
-        ></v-text-field>
-    
-        <v-btn class="mr-4" @click="submit" type="submit">submit</v-btn>
-        <v-btn @click="clear">clear</v-btn>
-        </form>
-    </v-container>
+     <v-container
+        fluid
+        fill-height
+      >
+        <v-layout
+          align-center
+          justify-center
+        >
+          <v-flex
+            xs6
+            sm6
+            md5
+          >
+            <v-card class="elevation-12"
+              height = 600
+              center
+            >
+              <v-toolbar
+                color="cyan darken-2"
+                dark
+                src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+                flat
+                height = 175
+              >
+                <v-toolbar-title>Connexion</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <v-card-text> 
+                <form @submit.prevent="login">
+                    <v-text-field
+                    v-model="username"
+                    :error-messages="userNameErrors"
+                    :counter="10"
+                    label="Pseudonyme"
+                    required
+                    @input="$v.username.$touch()"
+                    @blur="$v.username.$touch()"
+                    ></v-text-field>
+                    <v-text-field
+                    v-model="password"
+                    type="password"
+                    :error-messages="passwordErrors"
+                    label="Mot de passe"
+                    required
+                    @input="$v.password.$touch()"
+                    @blur="$v.password.$touch()"
+                    ></v-text-field>
+                <v-spacer></v-spacer>
+                <v-btn
+                 :bottom=true 
+                 class="ma-2" outlined color="cyan darken-2" @click="submit" type="submit">Se Connecter</v-btn>
+                </form>
+              </v-card-text>
+              <v-card-actions>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
 </template>
 
 <script>
