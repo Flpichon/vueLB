@@ -3,7 +3,7 @@ module.exports = function(app) {
     remote.before('**', function(ctx, next) {
         if (ctx.method.name !== 'logout' && ctx.method.name !== 'login') {
             if (typeof ctx.args.options !== 'undefined') {
-                if (typeof ctx.args.options.accessToken !== 'undefined') {
+                if (typeof ctx.args.options.accessToken !== 'undefined' && ctx.args.options.accessToken !== null) {
                     const tokenId = ctx.args.options.accessToken.id;
                     app.models.AccessToken.resolve(tokenId, (err, token) => {
                         if (!err && token) {
@@ -12,6 +12,8 @@ module.exports = function(app) {
                             token.save(next);
                         }
                     });
+                } else {
+                    next();
                 }
             } else {
                 next();
