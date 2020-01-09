@@ -51,6 +51,7 @@
                     "find": true,
                     "prototype.__get__accessTokens": true,
                     "prototype.__destroyById__accessTokens": true,
+                    "prototype.__findById__accessTokens": true,
                     "prototype.isValidToken": true
                 }
             }

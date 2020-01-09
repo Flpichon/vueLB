@@ -22,7 +22,7 @@ export default {
   methods: {
     getDocuments() {
       this.value = true;
-      console.log(this.value);
+      //console.log(this.value);
     }
   }
 };

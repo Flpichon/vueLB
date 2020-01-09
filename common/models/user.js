@@ -2,7 +2,7 @@
 
 module.exports = function(User) {
     User.beforeRemote('login', (ctx, instance, next) => {
-        ctx.req.body.ttl = 604800;
+        ctx.req.body.ttl = 900;
         next();
     });
 

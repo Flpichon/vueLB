@@ -34,6 +34,7 @@
                 "login",
                 "__destroyById__accessTokens",
                 "__get__accessTokens",
+                "__findById__accessTokens",
                 "logout",
                 "isValidToken"
             ]
@@ -47,6 +48,7 @@
                 "logout",
                 "find",
                 "__get__accessTokens",
+                "__findById__accessTokens",
                 "__destroyById__accessTokens",
                 "isValidToken"
             ]

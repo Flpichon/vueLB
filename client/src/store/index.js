@@ -73,6 +73,19 @@ export default new Vuex.Store({
                 }
             });
         },
+        async isTokenValid({ commit }) {
+            const userId = localStorage.getItem('userId');
+            const token = localStorage.getItem('token');
+            delete axios.defaults.headers.common['Authorization'];
+            const isTokenValid = await axios({ url: `/api/users/${userId}/isValidToken/${token}`, method: 'GET' });
+            axios.defaults.headers.common['Authorization'] = token;
+            return isTokenValid.data.token;
+        },
+        async refreshToken({ commit }) {
+            const userId = localStorage.getItem('userId');
+            const token = localStorage.getItem('token');
+            return await axios({ url: `/api/users/${userId}/accessTokens/${token}`, method: 'GET' });
+        }
     },
     modules: {},
     getters: {

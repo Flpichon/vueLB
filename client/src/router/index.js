@@ -48,13 +48,22 @@ const routes = [{
 const router = new VueRouter({
     routes
 })
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     if (to.fullPath === '/login' && store.getters.isLoggedIn) {
         next('/about');
         return;
     }
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (store.getters.isLoggedIn) {
+            const isTokenValid = await store.dispatch('isTokenValid');
+            if (!isTokenValid) {
+                await store.dispatch('logout')
+                    .then(() => {
+                        next('/login');
+                    });
+                return;
+            }
+            await store.dispatch('refreshToken');
             next();
             return;
         }
@@ -62,5 +71,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next();
     }
-})
+});
+
 export default router

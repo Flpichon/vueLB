@@ -8,10 +8,10 @@ module.exports = function(app) {
                     app.models.AccessToken.resolve(tokenId, (err, token) => {
                         if (!err && token) {
                             token.created = new Date();
-                            token.ttl = 604800;
+                            token.ttl = 900;
                             token.save(next);
                         }
-                    })
+                    });
                 }
             } else {
                 next();
