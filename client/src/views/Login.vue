@@ -15,6 +15,7 @@
             <v-card class="elevation-12"
               height = 600
               center
+              shaped
             >
               <v-toolbar
                 color="cyan darken-2"
@@ -23,7 +24,7 @@
                 flat
                 height = 175
               >
-                <v-toolbar-title>Connexion</v-toolbar-title>
+                <v-toolbar-title></v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text> 

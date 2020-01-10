@@ -9,7 +9,9 @@ import Vuelidate from 'vuelidate'
 import Notifications from 'vue-notification'
 import './plugins/element.js'
 import './components'
+import { sync } from 'vuex-router-sync'
 
+sync(store, router);
 Vue.use(Notifications);
 Vue.config.productionTip = false;
 Vue.config.devtools = true
