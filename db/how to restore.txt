@@ -1,1 +1,1 @@
-mongorestore --verbose \dump
+mongorestore --verbose dump/
